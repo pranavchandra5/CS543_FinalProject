@@ -86,7 +86,7 @@ def build_similarity_graph(images):
     
     return similarity_matrix
 
-def solve_tsp(similarity_matrix):
+def solve_tsp_MST(similarity_matrix):
     n = len(similarity_matrix)
     
     # Create MST to get initial structure
@@ -126,13 +126,9 @@ def solve_tsp(similarity_matrix):
     
     return path
 
-
 def order_images(images):
-    # print("images", images)
-    # print(images[0][0])
-    # print(images[0][1])
     similarity_matrix = build_similarity_graph(images)
-    order = solve_tsp(similarity_matrix)
+    order = solve_tsp_MST(similarity_matrix)
     return [images[i] for i in order]
 
 def load_images_from_directory(directory):
@@ -179,26 +175,6 @@ def create_video_from_images(images, output_filename, framerate):
 
     out.release()
     print(f"Created output video: {output_filename}")
-
-def test_small_subset(input_directory, num_images=3):
-    # Load images
-    images = load_images_from_directory(input_directory)
-    
-    # Limit the subset
-    images_subset = images[:num_images]  # First `num_images` images
-    print(f"Testing with {len(images_subset)} images.")
-
-    # Extract only the image data (not filenames)
-    image_data = [img[0] for img in images_subset]
-
-    # Compute similarity matrix
-    similarity_matrix = build_similarity_graph(image_data)
-
-    print("Similarity Matrix:")
-    print(similarity_matrix)
-    order = solve_tsp(similarity_matrix)
-    print("order", order)
-    return [images[i] for i in order]
 
 def run(input_directory, output_filename, framerate):
     images = load_images_from_directory(input_directory)
