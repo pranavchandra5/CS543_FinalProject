@@ -1,0 +1,19 @@
+{
+    "runtimes": {
+        "Graph_TSP_MST": 102.80578827857971,
+        "Graph_TSP_Nearest_Neighbor": 103.87709641456604,
+        "SIFT_Ransac_Naive": 293.169615983963,
+        "SIFT_Ransac_Advanced": 863.3246767520905
+    },
+    "mses": {
+        "Graph_TSP_MST": 1947.6286365552382,
+        "Graph_TSP_Nearest_Neighbor": 1946.163847468116,
+        "SIFT_Ransac_Naive": 1960.309914073725,
+        "SIFT_Ransac_Advanced": 1959.176035614901
+    },
+    "num_images": 88,
+    "resolution": [
+        720,
+        406
+    ]
+}
